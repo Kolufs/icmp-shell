@@ -148,6 +148,7 @@ void icmp_listener(icmp_callback callback) {
           unsigned char *data = packet_buffer + sizeof(struct iphdr) + sizeof(struct icmphdr);
           packet = deserialize(data);
           callback(packet, ip_header->saddr, sockfd);
+          free(packet);
         }
     }
 }
